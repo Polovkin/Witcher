@@ -1,0 +1,58 @@
+.show {
+  &-flex {
+    display: flex !important;
+  }
+  &-block {
+    display: block !important;
+  }
+  &-opacity {
+    opacity: 1 !important;
+  }
+}
+.hide {
+  &-display {
+    display: none !important;
+  }
+  &-opacity {
+    opacity: 0 !important;
+  }
+}
+
+//custome checkbox
+// <input id=""input>
+// <label for="input">
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 20px;
+  & + label {
+    position: relative;
+    padding: 0 0 0 60px;
+    cursor: pointer;
+    &:before {
+      @include pseudoElement(30px);
+      top: -4px;
+      left: 0;
+      transition: .2s;
+      border: 1px solid black;
+    }
+    &:after {
+      @include pseudoElement(20px);
+      transform: translate(-50%,-50%);
+      top: 11px;
+      left: 15px;
+      background: white;
+      transition: .2s;
+    }
+  }
+  &:checked + label {
+    &:after {
+      background: red;
+    }
+    &:before {
+      border-color: green;
+    }
+  }
+
+}

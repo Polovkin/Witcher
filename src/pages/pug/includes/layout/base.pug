@@ -1,0 +1,20 @@
+include ../../utils/mixins
+include ../../utils/variables
+-
+
+
+  //Path
+  imgPath = '/assets/img/'
+
+
+block variables
+
+doctype html
+html(lang=locale)
+  head
+    include ../templates/baseHead
+    title=title
+    block head
+  body
+    block main
+
