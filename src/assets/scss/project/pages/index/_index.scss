@@ -1,25 +1,315 @@
-#main {
+.main {
+  position: relative;
 
+  min-height: 100vh;
 
-  .block {
+  background: {
+    image: url('#{$imgPath}/bg.png');
+    size: cover;
+  };
 
-    @include size(300px);
-    background-color: rebeccapurple;
-    @include breakpoint($tablet__landscape) {
-      background-color: red;
+  $border-color: rgb(70, 70, 70);
+  $main-color: rgb(247, 52, 39);
+  $animation: .2s;
 
-    }
-    @include breakpoint($tablet__portrait) {
-      background-color: yellow;
+  .container {
+    position: unset;
+
+    height: 100vh;
+  }
+
+  &__content {
+    display: flex;
+
+    height: inherit;
+
+    @include breakpoint($mobile__all) {
+      align-items: center;
+      flex-direction: column-reverse;
+      justify-content: center;
     }
     @include breakpoint($phone__all) {
-      background-color: green;
+      justify-content: flex-end;
+
+      padding-top: 5rem;
     }
-    @include breakpoint($desktop__laptop) {
-      background-color: deeppink;
+    @include breakpoint($phone__small) {
+      padding-top: 2rem !important;
     }
-    @include breakpoint($desktop__laptop-min) {
-      background-color: blue;
+    @include breakpoint($phone__landscape) {
+      padding-top: 1rem;
+    }
+  }
+
+  &__img {
+    flex-basis: 50%;
+
+    @include breakpoint($phone__all) {
+      flex-basis: unset;
+    }
+
+    .img-wrap {
+      position: absolute;
+      top: 25px;
+      left: 50px;
+
+      max-width: 50%;
+
+      @include breakpoint(min-height (1080px)) {
+        top: unset;
+        bottom: -5px;
+      }
+      @include breakpoint($desktop__laptop) {
+        top: unset;
+        bottom: -5px;
+        left: 25px;
+
+        max-width: 750px;
+      }
+      @include breakpoint($desktop__laptop-min) {
+        top: 50px;
+        left: 15px;
+
+        max-width: 700px;
+      }
+      @include breakpoint($mobile__all) {
+        top: unset;
+        bottom: -5px;
+        left: 50%;
+
+        transform: translate(-50%, 0);
+      }
+      @include breakpoint($tablet__landscape) {
+        max-width: 340px;
+      }
+      @include breakpoint($tablet__portrait) {
+        width: 500px;
+        max-width: 500px;
+      }
+      @include breakpoint($phone__all) {
+        width: 290px;
+        max-width: unset;
+      }
+      @include breakpoint($phone__landscape) {
+        display: none;
+      }
+    }
+  }
+
+  &__wrap {
+    @extend %flex-column-center;
+    @include breakpoint($tablet__all) {
+      padding-top: 2rem;
+    }
+    @include breakpoint($phone__all) {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    display: flex;
+    align-items: flex-end;
+    flex-basis: 50%;
+    flex-direction: column;
+    justify-content: center;
+
+    color: white;
+
+    @include breakpoint($mobile__all) {
+      flex-basis: unset;
+
+      width: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint($phone__all) {
+      text-align: center;
+    }
+
+    h1 {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      span {
+        &:first-child {
+          font-size: 208px;
+          line-height: 187px;
+
+          margin-bottom: 16px;
+
+          @include breakpoint($tablet__all) {
+            font-size: 108px;
+            line-height: 87px;
+          }
+          @include breakpoint($phone__all) {
+            font-size: 55px;
+            line-height: 51px;
+          }
+        }
+
+        &:last-child {
+          font-size: 66px;
+          line-height: 50px;
+
+          margin-bottom: 1rem;
+
+          text-transform: uppercase;
+
+          @include breakpoint($tablet__all) {
+            font-size: 40px;
+            line-height: 40px;
+          }
+          @include breakpoint($phone__all) {
+            font-size: 25px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__code {
+    font-family: Arial;
+
+    display: flex;
+    justify-content: center;
+
+    width: 480px;
+    height: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    @include breakpoint($phone__all) {
+      width: 100%;
+      height: 50px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: normal;
+      line-height: 43px;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      flex-basis: 260px;
+      flex-grow: 1;
+      justify-content: center;
+
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      color: $main-color;
+      border: {
+        style: dashed;
+        right: {
+          style: solid;
+        };
+
+        width: 1px;
+
+        color: $border-color;
+
+
+        top-left-radius: 50px;
+        bottom-left-radius: 50px;
+      };
+
+      @include breakpoint($phone__all) {
+        font-size: 20px;
+        line-height: 23px;
+
+        flex-basis: 55%;
+      }
+
+      &:before {
+        top: 50%;
+        right: -20px;
+
+        height: 80px;
+
+        transform: translate(-50%, -50%);
+
+        background-color: $border-color;
+
+        @include pseudoElement(1px);
+      }
+    }
+
+    button {
+      flex-basis: 200px;
+
+      transition: all $animation;
+      text-transform: uppercase;
+
+      border: {
+        style: dashed;
+        left: none;
+
+        width: 1px;
+
+        color: $border-color;
+
+
+        top-right-radius: 50px;
+        bottom-right-radius: 50px;
+      };
+
+      @include breakpoint($desktop__all) {
+        &:hover {
+          border: 1px solid $color__light;
+          background-color: green;
+        }
+      }
+      @include breakpoint($phone__all) {
+        font-size: 15px;
+        line-height: 13px;
+
+        flex-basis: 45%;
+      }
+    }
+  }
+
+  &__terms {
+    position: absolute;
+  }
+
+  &__item {
+    position: absolute;
+  }
+
+  &__btn {
+    font-weight: bold;
+
+    padding: 20px 120px;
+
+    transition: all $animation;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: $color__light;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    background-color: $main-color;
+
+    @include breakpoint($desktop__all) {
+      &:hover {
+        color: $main-color;
+        border: 2px solid $main-color;
+        background-color: transparent;
+      }
+    }
+    @include breakpoint($phone__all) {
+      padding: 15px 35px;
     }
   }
 }

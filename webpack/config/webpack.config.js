@@ -34,8 +34,8 @@ const plugins = (type) => {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        //{from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-        //{from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+        {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+        {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
        // {from: `${PATHS.src}/pages/php`, to: ``},
         {from: `${PATHS.src}/static`, to: ''},
       ]
@@ -105,7 +105,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/${fileName('js')}`,
     path: PATHS.dist,
-    publicPath: isDev ? '/' : '/',
+    publicPath: isDev ? '/' : '/witcher/',
 
   },
   optimization: {

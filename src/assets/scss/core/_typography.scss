@@ -1,14 +1,15 @@
 $font__line-height: auto;
 $font__size: 18px;
 $font__weight: normal;
-$font__family: 'Source Code Pro';
-$font__file-name: 'SourceCodePro-';
+$font__family: 'Cambria';
+$font__file-name: 'Cambria-';
 $font__path: '/assets/fonts/#{$font__file-name}';
-$font__ext: (eot, woff, woff2);
+$font__ext: (woff,woff2);
 $font__types: (
     ('Bold', bold, normal),
+    ('BoldItalic', bold, italic),
+    ('Italic', normal, italic),
     ('Regular', normal, normal),
-    ('It', 500, italic),
 );
 
 @each $name, $weight, $style in $font__types {
@@ -21,8 +22,8 @@ html {
   line-height: $font__line-height;
 
   height: 100%;
- @include breakpoint ($desktop__laptop) {
-   font-size: 16px;
+  @include breakpoint($desktop__laptop) {
+    font-size: 16px;
   }
   @include breakpoint($tablet__all) {
     font-size: 15px;
@@ -30,7 +31,7 @@ html {
   @include breakpoint(($width__mobile-min + 1) $width__tablet-port) {
     font-size: 14px;
   }
-  @include breakpoint($width__min  ($width__mobile-min + 1)) {
+  @include breakpoint($width__min ($width__mobile-min + 1)) {
     font-size: 12px;
   }
 }
