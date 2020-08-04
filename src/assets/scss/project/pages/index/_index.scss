@@ -35,7 +35,7 @@
       padding-top: 5rem;
     }
     @include breakpoint($phone__small) {
-      padding-top: 2rem !important;
+      padding-top: 1rem !important;
     }
     @include breakpoint($phone__landscape) {
       padding-top: 1rem;
@@ -53,7 +53,9 @@
       height: 40%;
     }
     @include breakpoint($phone__all) {
-      height: 60%;
+      flex-grow: 1;
+      position: relative;
+      width: 100%;
     }
 
     .img-wrap {
@@ -88,12 +90,21 @@
 
         max-width: 700px;
       }
-      @include breakpoint($mobile__all) {
+      @include breakpoint($tablet__all) {
         position: relative;
         top: unset;
         left: unset;
         max-width: unset;
         margin: 0 auto;
+      }
+      @include breakpoint($phone__all) {
+        bottom: -35px;
+        max-width: unset;
+        top: unset;
+        left: -15px;
+      }
+      @include breakpoint($phone__small) {
+        bottom: -100px !important;
       }
       @include breakpoint($phone__landscape) {
         display: none;
@@ -199,6 +210,9 @@
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
+    @include breakpoint($phone__small) {
+      margin-top: 20px !important;
+    }
 
     h2 {
       font-size: 40px;
@@ -288,11 +302,28 @@
   }
 
   &__terms {
+
     position: absolute;
+    font-family: Arial;
+    font-size: 14px;
+    color: #464646;
+    bottom: 60px;
+    right: 65px;
+    font-weight: bold;
+    @include breakpoint($phone__all) {
+      display: none;
+    }
   }
 
   &__item {
     position: absolute;
+    left: 70px;
+    bottom: 45px;
+    max-width: 220px;
+    z-index: z(content);
+     @include breakpoint ($phone__all) {
+         display: none;
+      }
   }
 
   &__btn {
@@ -319,5 +350,10 @@
     @include breakpoint($phone__all) {
       padding: 15px 35px;
     }
+    @include breakpoint($phone__small) {
+      padding: 10px 35px !important;
+    }
   }
+
+
 }

@@ -1,8 +1,6 @@
 extends ../layout/base
 
 block variables
-  - let title = 'test'
-
 
 block main
   main.main
@@ -20,9 +18,6 @@ block main
               h2#code witcher
               +Button('main__btn-copy','copy code')
             +Button('main__btn','play now')
-      span.main__terms *Terms and Conditions Apply
+      span.main__terms * Terms and Conditions Apply
       .main__item
-        span 7
-        .main__item--wrap
-          span slots
-          span reality
+        +Img('icons/logo.png')
