@@ -19,6 +19,7 @@
 
     window.getSelection().removeAllRanges();
   })
+
   //Spark animation
   let density = 70,
     speed = 2,
