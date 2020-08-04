@@ -59,6 +59,7 @@
     }
     @include breakpoint($phone__landscape) {
       padding-top: 1rem;
+      justify-content: center;
     }
   }
 
@@ -76,6 +77,9 @@
       flex-grow: 1;
       position: relative;
       width: 100%;
+    }
+    @include breakpoint($phone__landscape) {
+      display: none;
     }
 
     .img-wrap {
@@ -132,9 +136,7 @@
       @include breakpoint($phone__small) {
         bottom: -100px !important;
       }
-      @include breakpoint($phone__landscape) {
-        display: none;
-      }
+
     }
 
   }
@@ -328,6 +330,14 @@
         bottom-right-radius: 50px;
       };
 
+      &:focus {
+        outline: none;
+      }
+
+      &:active {
+        border-bottom: none !important;
+      }
+
       @include breakpoint($desktop__all) {
         &:hover {
           border: 1px solid $color__light;
@@ -352,6 +362,9 @@
     bottom: 60px;
     right: 65px;
     font-weight: bold;
+    @include breakpoint($desktop__laptop) {
+      bottom: 10px;
+    }
     @include breakpoint($phone__all) {
       display: none;
     }
@@ -397,5 +410,23 @@
     }
   }
 
+  .spark {
+    background-color: #DE4A00;
+    font-family: 'Helvetica', sans-serif;
+    visibility: hidden;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 30%;
+    box-shadow: 0 0 5px #AB000B;
+    z-index: z(content);
 
+    &-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
 }
