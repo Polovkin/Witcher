@@ -11,6 +11,26 @@
   $border-color: rgb(70, 70, 70);
   $main-color: rgb(247, 52, 39);
   $animation: .2s;
+  @keyframes top-bottom {
+    0% {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes left-right {
+    0% {
+      transform: translate(-200px,0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
 
   .container {
     position: unset;
@@ -62,9 +82,15 @@
       position: absolute;
       top: 25px;
       left: 50px;
-
+opacity: 0;
+      transform: translate(-200px,0);
       max-width: 50%;
-
+      animation: {
+        name: left-right;
+        duration: 4s;
+        fill-mode: forwards;
+        timing-function: cubic-bezier(0, 0.28, 0, 0.99);
+      };
       @include ie11() {
         width: 1100px;
         max-width: none;
@@ -110,6 +136,7 @@
         display: none;
       }
     }
+
   }
 
   &__wrap {
@@ -129,8 +156,15 @@
     flex-basis: 50%;
     flex-direction: column;
     justify-content: center;
-
+    opacity: 0;
+    transform: translateY(-50%);
     color: white;
+    animation: {
+      name: top-bottom;
+      duration: 1.6s;
+      fill-mode: forwards;
+      timing-function: cubic-bezier(0, 0.28, 0, 0.99);
+    };
     @include ie11() {
       z-index: z(content);
     }
@@ -139,6 +173,7 @@
 
       width: 100%;
     }
+
   }
 
   &__title {
@@ -321,9 +356,9 @@
     bottom: 45px;
     max-width: 220px;
     z-index: z(content);
-     @include breakpoint ($phone__all) {
-         display: none;
-      }
+    @include breakpoint($phone__all) {
+      display: none;
+    }
   }
 
   &__btn {
