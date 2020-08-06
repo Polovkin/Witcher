@@ -15,7 +15,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const PATHS = {
   src: path.join(__dirname, '../../src'),
-  dist: path.join(__dirname, (isProd ? '../../public' : '../../dist')),
+  dist: path.join(__dirname, (isProd ? '../../dist' : '../../dist')),
   webpack: path.join(__dirname, '../../webpack'),
   assets: 'assets/',
 };
@@ -105,7 +105,6 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/${fileName('js')}`,
     path: PATHS.dist,
-    publicPath: isDev ? '/' : '/witcher/',
 
   },
   optimization: {
@@ -199,7 +198,7 @@ module.exports = {
               esModule: false,
                name: '[name].[ext]',
               outputPath: `${PATHS.assets}/img`,
-             //publicPath: `/${PATHS.assets}img`,
+             publicPath: `../img`,
             },
           },
         ],
